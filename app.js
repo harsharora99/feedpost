@@ -74,8 +74,8 @@ app.use((error, req, res, next) => {
     })
 })
 
-mongoose.connect('mongodb+srv://harsh:harsharora@1999@cluster0.kjmvg.mongodb.net/messages?retryWrites=true&w=majority', {useNewUrlParser: true}).then(result => {
-    const server = app.listen(8080);
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true}).then(result => {
+    const server = app.listen(process.env.PORT || 8080);
     const io = require('./socket').init(server); //require returns a function which when called returns an object
     io.on('connection', socket => { //socket is the connection between server and client (this function will be excuted whenever a new client connects)
         console.log('Client connected');
