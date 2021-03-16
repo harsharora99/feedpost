@@ -47,21 +47,26 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     //Now we allow the specified domains to send requests with given methods and also can set the header fields that are specified
+    //console.log('aa');
     next();
 })
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'staging') {
     app.use(express.static(path.join(__dirname, 'client/build')));
-
-    app.get('*', function (req, res) {
-        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-    });
+    //console.log('a');
 };
+
 
 
 app.use('/feed', feedRoutes);
 
 app.use('/auth', authRoutes);
+
+
+app.use('*', function (req, res) {
+    //console.log('haa');
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+});
 
 app.use((error, req, res, next) => {
     console.log(error);

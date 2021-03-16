@@ -102,6 +102,7 @@ exports.login = async (req, res, next) => {
 }
 
 exports.getUserStatus = async (req, res, next) => {
+    //console.log('heyheyyy');
     // User.findById(req.userId)
     //     .then(user => {
     //         if (!user) {
@@ -139,6 +140,7 @@ exports.getUserStatus = async (req, res, next) => {
 }
 
 exports.updateUserStatus = async (req, res, next) => {
+    //console.log('hehhhehehehe')
     const newStatus = req.body.status;
     // User.findById(req.userId)
     //     .then(user => {

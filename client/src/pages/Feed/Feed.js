@@ -29,6 +29,7 @@ class Feed extends Component {
       }
     })
       .then(res => {
+        console.log(res.status);
         if (res.status !== 200) {
           throw new Error('Failed to fetch user status.');
         }
@@ -289,7 +290,7 @@ class Feed extends Component {
   render() {
     return (
       <Fragment>
-        {/* <ErrorHandler error={this.state.error} onHandle={this.errorHandler} /> */}
+        <ErrorHandler error={this.state.error} onHandle={this.errorHandler} />
         <FeedEdit
           editing={this.state.isEditing}
           selectedPost={this.state.editPost}

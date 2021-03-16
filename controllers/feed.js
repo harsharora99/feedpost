@@ -9,6 +9,7 @@ const User = require('../models/user');
 const { isObject } = require('util');
 
 exports.getPosts = async (req, res, next) => {
+    //console.log('hey');
     const currentPage = req.query.page || 1;
     const perPage = 2;
     // let totalItems;
@@ -69,7 +70,7 @@ exports.getPosts = async (req, res, next) => {
 
 exports.postPost = async (req, res, next) => { //creates a post
     const errors = validationResult(req);
-    console.log('heyma')
+    //console.log('heyma')
     if (!errors.isEmpty()) {
         const error = new Error('Validation Failed, entered data is incorrect.');
         error.statusCode = 422;
@@ -79,7 +80,7 @@ exports.postPost = async (req, res, next) => { //creates a post
         //     errors: errors.array()
         // })
     }
-    console.log('hey');
+    //console.log('hey');
     if (!req.file) { //if file is undefined
         const error = new Error('No image provided.');
         error.statusCode = 422; //validation error
@@ -99,7 +100,7 @@ exports.postPost = async (req, res, next) => { //creates a post
         // }
         creator: req.userId //mongoose will automatically convert this string to ObjectId
     })
-    console.log(post.imageUrl);
+    //console.log(post.imageUrl);
     // post.save()
     //     .then(result => {
     //         return User.findById(req.userId);
@@ -155,7 +156,7 @@ exports.postPost = async (req, res, next) => { //creates a post
                         name: user.name
                     }
                 })
-                return savedUser; 
+                //return savedUser; 
     } catch(err) {
         //console.log(err)
         if (!err.statusCode) {
